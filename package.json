@@ -16,5 +16,9 @@
     "jade": "^1.11.0",
     "magic-csv": "^6.0.0",
     "multer": "^1.1.0"
+  },
+  "repository": {
+  "type": "git",
+  "url": "github.com/rentalia/honyaku"
   }
 }
