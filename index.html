@@ -1,0 +1,155 @@
+<!doctype html>
+<!-- 
+Copyright 2017 Rentalia
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Honyaku</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+<script src="src/jquery.csv.js"></script>
+<script src="js/FormatFiles.js"></script>
+
+<style>
+  .jumbotron {
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+  }
+  </style>
+</head>
+
+<script type="text/javascript">
+var selectedNoPlurals = false;
+var selectedPlurals   = false;
+
+function yesnoCheck() {
+  var es = document.forms[0].elements; //to clear input files
+  var radioYes = document.getElementById('yesPls').checked;
+  var radioNO  = document.getElementById('noPls').checked;
+
+  if (radioYes) {
+    document.getElementById('pluralsDiv').style.display = 'block';
+    document.getElementById('submitForm').style.display = 'none';
+  }else if (radioNO && selectedNoPlurals){
+    console.log('entra en no pls y click ');
+    document.getElementById('pluralsDiv').style.display = 'none';
+    document.getElementById('submitForm').style.display = 'block';
+    document.getElementById('showListNoPlurals').style.display = 'block';
+      //clearInputFile(es[0]);
+  }
+     clearInputFile(es[3]);
+}
+function checkFileUploaded(type){
+
+  var radioNO = document.getElementById('noPls').checked;
+  var radioYes  = document.getElementById('yesPls').checked;
+
+  if (type == 'files'){
+    selectedNoPlurals = true;
+  }else {
+    selectedPlurals = true;
+  }
+
+  if (radioYes && selectedNoPlurals && selectedPlurals){
+    document.getElementById('submitForm').style.display = 'block';
+    document.getElementById('showListPlurals').style.display = 'block';
+    document.getElementById('submitForm').style.display = 'block';
+    document.getElementById('showListPlurals').style.display = 'block';
+    document.getElementById('showListNoPlurals').style.display = 'block';
+  }else if(radioNO && selectedNoPlurals){
+    //No plurals
+    document.getElementById('submitForm').style.display = 'block';
+    document.getElementById('showListNoPlurals').style.display = 'block';
+  }
+}
+
+function clearInputFile(f){
+  if(f.value){
+    try{
+      f.value = ''; //for IE11, latest Chrome/Firefox/Opera...
+    }catch(err){
+      console.log("Error clearing input");
+    }
+    if(f.value){ //for IE5 ~ IE10
+      var form = document.createElement('form'), ref = f.nextSibling;
+      form.appendChild(f);
+      form.reset();
+      ref.parentNode.insertBefore(f,ref);
+    }
+  }
+}
+</script>
+
+<body>
+<div class="container">
+
+    <div class="jumbotron">
+      <h2>Honyaku</h2>
+      <p>Curated tool to transform CSV's files into Android and iOS localizable files.</p>
+  </div>
+
+  <div class="well"><p><h4>Select a CSV file:</h4></p><br>
+  <form lang="en" action="/upload" method='POST' enctype='multipart/form-data'>
+    <div class="form-group">
+				<div class="row">
+					<div class="col-md-4">
+						<input type="file" class="filestyle" data-buttonname="btn-primary" id="files" name="uploadedFiles" onchange="javascript:checkFileUploaded('files')" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+					</div>
+				</div>
+		</div>
+
+    <br></br>
+    <p><h4>Will contain plurals?</h4></p>
+    <input type="radio" name="pls" value="0" id="noPls" onclick="javascript:yesnoCheck();"> No<br>
+    <input type="radio" name="pls" value="1" id="yesPls" onclick="javascript:yesnoCheck();"> Yes<br>
+    <br></br>
+    <div id="pluralsDiv" style="display:none">
+      <p><h4>Select a CSV file with plurals</h4></p>
+      <div class="form-group">
+          <div class="row">
+            <div class="col-md-4">
+              <input type="file" class="filestyle" data-buttonname="btn-primary" id="plurals" name="uploadPlrs" onchange="javascript:checkFileUploaded('plurals');" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
+            </div>
+          </div>
+      </div>
+
+
+    </div>
+    <br></br>
+    <div id="submitForm" style="display:none">
+      <button type="submit" class="btn btn-primary btn-sm">Process</button>
+    </div>
+  </form>
+  <br></br>
+</div>
+
+<div id="showListNoPlurals" style="display:none">
+  <output id="list"></output>
+  <hr />
+  <table id="contents" style="width:100%; height:400px;" class="table table-striped"></table>
+</div>
+
+<div id="showListPlurals" style="display:none">
+  <output id="listPlurals"></output>
+  <hr />
+  <table id="contentsPlurals" style="width:100%; height:400px;" class="table table-striped"></table>
+</div>
+
+</body>
+</html>

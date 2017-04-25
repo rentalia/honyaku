@@ -1,0 +1,17 @@
+PLS,KEY,ES,EN,DE,FR,PT,IT,NL
+app_viajeros,one,**d** viajero ,**d** traveller,**d** Urlauber,**d** voyageur,**d** viajante,**d** viaggiatore,**d** reiziger
+,other,**d** viajeros,**d** travellers,**d** Urlaubern,**d** voyageurs,**d** viajantes,**d** viaggiatori,**d** reizigers
+,,,,,,,,
+app_noches,one,**d** noche,**d** night,**d** Nacht,**d** nuit,**d** noite,**d** notte,**d** nacht
+,other,**d** noches,**d** nights,**d** Nächte,**d** nuits,**d** noites,**d** notti,**d** nachten
+,,,,,,,,
+,,,,,,,,
+app_opiniones,one ,**d** opinión,**d** opinion,**d** Bewertung,**d** opinion,**d** opinião,**d** opinione,**d** mening
+,other,**d** opiniones,**d** opinions,**d** Bewertungen,**d** opinions,**d** opiniões,**d** opinioni,**d** meningen
+,,,,,,,,
+,,,,,,,,
+app_camas,one,**d** cama,**d** bed,**d** Bett,**d** lit,**d** cama,**d** letto,**d** bed
+,other,**d** camas,**d** beds,**d** Betten,**d** lits,**d** camas,**d** letti,**d** bedden
+,,,,,,,,
+app_resultados,one,**d** resultado,**d** result,**d** Ergebnis,**d** résultat,**d** resultado,**d** risultato,**d** resultaat
+,other,**d** resultados,**d** results,**d** Ergebnisse,**d** résultats,**d** resultados,**d** risultati,**d** resultaten

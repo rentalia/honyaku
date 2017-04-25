@@ -1,0 +1,153 @@
+## Honyaku
+
+Honyaku (hon'yaku) suru in japanese means translation or to translate. And we believe it applies to this software, a web application helper to generate Android and iOS translation files (.xml & .strings) using a CSV file as a source.
+
+Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could added it (or maybe you could added it and make a PR? ;] )
+
+### Installation
+
+This application is a node express-server based application. You will need to install npm.
+
+1. Download **node** based in your operative system:
+
+       https://nodejs.org/en/download/package-manager/
+
+2. Next, download this project and go to root path, there you'll see a file called **'express-server.js'** and **'package.json'** (with other files), use the next command to install npm packages:
+
+       sudo npm install
+
+3. Next step is to run express-server using the next command:
+
+        node express-server.js
+
+4. Open a web browser and type this url:
+
+        http://localhost:3000/
+
+Now, if everything goes OK you will be able to see something like the image above
+
+![web-local](https://cloud.githubusercontent.com/assets/724536/25343776/50aa3ac6-2910-11e7-9b06-923b99bb00a6.png)
+
+
+5. Upload the **CSV** file with the format specified above and  mark if you would add plurals also.
+
+6. If you select **NO** for plurals and click on **process button**, you will see a Success! message. Go to download path and select iOS or Android, you'll see the localized files for each language specified in CSV file there.
+
+Success Message looks like this:
+
+![Success](https://cloud.githubusercontent.com/assets/724536/25346311/8df6a9ee-2917-11e7-879b-ed431d548767.png)
+
+
+7. If you select **YES** for plurals, select CSV file for plurals and click **Process button**, if everything goes well you will see a success! message. Go to download path and select iOS or Android, you'll see the localized files for each language specified in CSV file there.
+
+![Plurals](https://cloud.githubusercontent.com/assets/724536/25345603/d469aca2-2915-11e7-8306-d4089aeecdc6.png)
+
+Success Message looks like this:
+
+![Success](https://cloud.githubusercontent.com/assets/724536/25346311/8df6a9ee-2917-11e7-879b-ed431d548767.png)
+
+
+**iOS files**
+
+![iOS file](https://cloud.githubusercontent.com/assets/724536/25345429/55fc5838-2915-11e7-83f7-c796941d9424.png)
+
+**Android files**
+
+![Android](https://cloud.githubusercontent.com/assets/724536/25345488/8a9f6350-2915-11e7-8619-fe5bd02617bd.png)
+
+
+
+
+## CSV File
+
+The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application
+
+key          |       EN      | ES
+------------ | ------------- | -------------
+app_string | This is a test | Esto es una prueba
+app_string_more | This is other text | Este es otro texto
+
+
+The **key** word represents the key that your app will use to localize text for each language.
+
+- **Adding variables**
+
+As you will probably know, sometimes is necessary to add variables between our text. Honyaku supports this feature, adding a wildcard (double asterisk) inside the localizable text. For example:
+
+
+Before       |       After
+------------ | -------------
+The user is 20 years old | The user is \*\*ld\*\* years old
+My dog is called: Gandalf | My dog is called: \*\*s\*\*
+http://es.someURL.com/12 , http://en.someURL.com/13 | http://\*\*1s\*\*.someURL.com/\*\*2ld\*\*
+
+
+
+- **Type data supported**
+
+Type         |       Wildcard
+------------ | -------------
+String	      | s
+Double	      | d
+Long Double  | ld
+Float        | f
+
+- **Example output**
+
+CSV file text  |       Android output      | iOS output
+------------   | -------------             | -------------
+This application was made with love by \*\*1s\*\*.\n\nTo say thanks or buy them a coffe say something ;).  | <string name="app_thanks">This application was made with love by %1$s.\n\nTo say thanks or buy them a coffe say something ;).</string> | "app_thanks" = "This application was made with love byr %1$@.\n\nTo say thanks or buy them a coffe say something ;).";
+
+
+- **Escape symbols**
+
+For now, we are escaping the % symbol. This case is evaluated in the application, but if you need to escape more symbols, please add an **issue** and we will try to add it.
+
+Symbol       |       Escaping
+------------ | -------------
+20%	      |  \*\*ld\*\*%
+
+
+
+
+### Plurals
+
+You can create a CSV file to process plurals. This is how the structure looks like:
+
+PLS          |       KEY      | EN                     | ES
+------------ | -------------  | -------------          | -------------
+app_people   | one            |  \*\*ld\*\* traveller  |  \*\*ld\*\* viajero
+app_people   | other          |  \*\*ld\*\* travellers |  \*\*ld\*\* viajeros
+app_night    | one            |  \*\*ld\*\* night      |  \*\*ld\*\* noche
+app_night    | other          |  \*\*ld\*\* nights     |  \*\*ld\*\* noches
+
+
+You can see all of the rule cases supported for each language in: http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
+
+Example:
+
+Language     |   Plural Type
+------------ | -------------       
+ES | one y other
+EN | one y other
+IT | one y other
+PT | one y other
+FR | one y other
+CA | one , two, few, other
+Dutch (NL) | one y other
+German (DE) | one y other
+ALL | zero
+
+
+### Note:
+
+if you have any errors deploying **express-server.js** try to kill the process in CLI:
+
+        $:  ps -ef | grep express
+
+        $:  kill process-number
+
+## TO DO
+
+- Errors control
+- Tests

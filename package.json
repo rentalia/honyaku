@@ -1,0 +1,20 @@
+{
+  "name": "express-server",
+  "version": "1.0.0",
+  "description": "Curated tool to transform CSV's files into Android and iOS localizable files using express-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sofia Swidarowicz Andrade && Rentalia",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "connect-multiparty": "^2.0.0",
+    "delete": "^0.3.2",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "magic-csv": "^6.0.0",
+    "multer": "^1.1.0"
+  }
+}
