@@ -62,9 +62,11 @@ Success Message looks like this:
 
 The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
 
-#### You can use the **Example** folder to see how the CSV are constructed.
+`<addr>` You can use the **Example** folder to see how the CSV are constructed. :page_facing_up:
 
-#### Also, you can create in path download/Android  and download/iOS all the languages that your app will support.
+`<addr>` Also, you can create in path **download/Android**  and **download/iOS** all the languages that your app will support. :memo:
+
+
 
 key          |       EN      | ES
 ------------ | ------------- | -------------
@@ -73,6 +75,7 @@ app_string_more | This is other text | Este es otro texto
 
 
 The **key** word represents the key that your app will use to localize text for each language.
+
 
 - **Adding variables**
 
@@ -96,11 +99,14 @@ Double	      | d
 Long Double  | ld
 Float        | f
 
+
+
 - **Example output**
 
 CSV file text  |       Android output      | iOS output
 ------------   | -------------             | -------------
 This application was made with love by \*\*1s\*\*.\n\nTo say thanks or buy them a coffe say something ;).  | <string name="app_thanks">This application was made with love by %1$s.\n\nTo say thanks or buy them a coffe say something ;).</string> | "app_thanks" = "This application was made with love byr %1$@.\n\nTo say thanks or buy them a coffe say something ;).";
+
 
 
 - **Escape symbols**
