@@ -1,4 +1,6 @@
-## Honyaku
+## Honyaku  
+
+[![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)]() 
 
 Honyaku (hon'yaku) suru in japanese means translation or to translate. And we believe it applies to this software, a web application helper to generate Android and iOS translation files (.xml & .strings) using a CSV file as a source.
 

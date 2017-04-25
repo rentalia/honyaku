@@ -36,6 +36,8 @@ server.get('/',function(request, response){
 
 
 server.post('/upload', multipartMiddleware, function(req, res) {
+  console.log("Body request: " + req.body);
+  console.log("Request files: "+ req.files);
   console.log(req.body, req.files);
 
   var fs = require('fs');
@@ -46,7 +48,6 @@ server.post('/upload', multipartMiddleware, function(req, res) {
 
   //this is the radio button id from HTML file, to know if it does have plurals
   var plurals = req.body.pls;
-  console.log('PLURALS :' + plurals);
 
   //it is plurals
   if (plurals == '1'){
@@ -167,7 +168,7 @@ function createHTMLFile(files){
 }
 
 function createHTMLFileSuccess(files){
-  var html = 'Scuccess! you can now download your files';
+  var html = 'Success! you can now download your files ' ;
   var finalHtml = ('<ul>'
      + html
      + '</ul>');
@@ -198,7 +199,7 @@ function showError(response, callbackResponse){
   var html = '';
   console.log('response ' +  JSON.stringify(callbackResponse));
   if (callbackResponse.type == CALLBACK_MESSAGE.ERROR){
-    html += '<li>'+callbackResponse.message+'Back to Index <a href="http://localhost:3000"></a>'+'</li>';
+    html += '<li>'+callbackResponse.message+' Back to Index <a href="http://localhost:3000"></a>'+'</li>';
   }else{
     html += '<li>'+callbackResponse.code +' '+ callbackResponse+'<a href="http://localhost:3000">Back to Index  </a>'+'</li>';
   }

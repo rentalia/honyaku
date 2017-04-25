@@ -1,5 +1,4 @@
-<!doctype html>
-<!-- 
+<!--
 Copyright 2017 Rentalia
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,6 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -106,14 +106,7 @@ function clearInputFile(f){
 
   <div class="well"><p><h4>Select a CSV file:</h4></p><br>
   <form lang="en" action="/upload" method='POST' enctype='multipart/form-data'>
-    <div class="form-group">
-				<div class="row">
-					<div class="col-md-4">
-						<input type="file" class="filestyle" data-buttonname="btn-primary" id="files" name="uploadedFiles" onchange="javascript:checkFileUploaded('files')" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-					</div>
-				</div>
-		</div>
-
+    <input type="file" id="files" name="uploadedFiles" onchange="javascript:checkFileUploaded('files')">
     <br></br>
     <p><h4>Will contain plurals?</h4></p>
     <input type="radio" name="pls" value="0" id="noPls" onclick="javascript:yesnoCheck();"> No<br>
@@ -121,15 +114,7 @@ function clearInputFile(f){
     <br></br>
     <div id="pluralsDiv" style="display:none">
       <p><h4>Select a CSV file with plurals</h4></p>
-      <div class="form-group">
-          <div class="row">
-            <div class="col-md-4">
-              <input type="file" class="filestyle" data-buttonname="btn-primary" id="plurals" name="uploadPlrs" onchange="javascript:checkFileUploaded('plurals');" tabindex="-1" style="position: absolute; clip: rect(0px 0px 0px 0px);">
-            </div>
-          </div>
-      </div>
-
-
+      <input type="file" id="plurals" name="uploadPlrs" onchange="javascript:checkFileUploaded('plurals');"/>
     </div>
     <br></br>
     <div id="submitForm" style="display:none">
