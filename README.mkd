@@ -62,9 +62,9 @@ Success Message looks like this:
 
 The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
 
-You can use the **Example** folder to see how the CSV are constructed.
+#### You can use the **Example** folder to see how the CSV are constructed.
 
-Also, you can create in path download/Android  and download/iOS all the languages that your app will support.
+#### Also, you can create in path download/Android  and download/iOS all the languages that your app will support.
 
 key          |       EN      | ES
 ------------ | ------------- | -------------
