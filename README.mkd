@@ -62,9 +62,9 @@ Success Message looks like this:
 
 The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
 
-` You can use the **Example** folder to see how the CSV are constructed.` :page_facing_up:
+-  You can use the `Example` folder to see how the CSV are constructed. :page_facing_up:
 
-` Also, you can create in path **download/Android**  and **download/iOS** all the languages that your app will support.` :memo:
+ - Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. :memo:
 
 
 
@@ -153,13 +153,17 @@ ALL | zero
 
 ### Note:
 
-if you have any errors deploying **express-server.js** try to kill the process in CLI:
+if you have any errors deploying `express-server.js` try to kill the process in CLI:
+
+Search for express-server process:
 
         $:  ps -ef | grep express
+
+Kill the process:
 
         $:  kill process-number
 
 ## TO DO
 
-- Errors control
-- Tests
+- [ ] Errors control
+- [ ] Tests
