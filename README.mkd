@@ -8,11 +8,11 @@ Right now, we don't support **.po** files, because we develop this tool to help 
 
 This application is a node express-server based application. You will need to install npm.
 
-1. Download **node** based in your operative system:
+1. Download **node** for your operative system:
 
        https://nodejs.org/en/download/package-manager/
 
-2. Next, download this project and go to root path, there you'll see a file called **'express-server.js'** and **'package.json'** (with other files), use the next command to install npm packages:
+2. Next, download this project and go to root path, there you'll see a file called `express-server.js` and `package.json` (with other files), use the next command to install npm packages:
 
        sudo npm install
 
@@ -60,7 +60,13 @@ Success Message looks like this:
 
 ## CSV File
 
-The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application
+The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
+
+-  You can use the `Example` folder to see how the CSV are constructed. :page_facing_up:
+
+ - Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. :memo:
+
+
 
 key          |       EN      | ES
 ------------ | ------------- | -------------
@@ -69,6 +75,7 @@ app_string_more | This is other text | Este es otro texto
 
 
 The **key** word represents the key that your app will use to localize text for each language.
+
 
 - **Adding variables**
 
@@ -83,7 +90,7 @@ http://es.someURL.com/12 , http://en.someURL.com/13 | http://\*\*1s\*\*.someURL.
 
 
 
-- **Type data supported**
+- **Data type supported**
 
 Type         |       Wildcard
 ------------ | -------------
@@ -92,11 +99,14 @@ Double	      | d
 Long Double  | ld
 Float        | f
 
+
+
 - **Example output**
 
 CSV file text  |       Android output      | iOS output
 ------------   | -------------             | -------------
 This application was made with love by \*\*1s\*\*.\n\nTo say thanks or buy them a coffe say something ;).  | <string name="app_thanks">This application was made with love by %1$s.\n\nTo say thanks or buy them a coffe say something ;).</string> | "app_thanks" = "This application was made with love byr %1$@.\n\nTo say thanks or buy them a coffe say something ;).";
+
 
 
 - **Escape symbols**
@@ -139,15 +149,21 @@ German (DE) | one y other
 ALL | zero
 
 
+
+
 ### Note:
 
-if you have any errors deploying **express-server.js** try to kill the process in CLI:
+if you have any errors deploying `express-server.js` try to kill the process in CLI:
+
+Search for express-server process:
 
         $:  ps -ef | grep express
+
+Kill the process:
 
         $:  kill process-number
 
 ## TO DO
 
-- Errors control
-- Tests
+- [ ] Errors control
+- [ ] Tests
