@@ -67,7 +67,7 @@ function parseWildcardsForAndroid(data){
 //result: %@ %d %f
    data = data.replace("**s**","%s");
    data = data.replace("**d**","%d");
-   data = data.replace("**ld**","%ld");
+   data = data.replace("**ld**","%d");
    data = data.replace("**f**","%f");
    data = parseWithRegex(data);
 
