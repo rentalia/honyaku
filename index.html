@@ -46,11 +46,13 @@ limitations under the License.
     if (radioYes) {
       document.getElementById('pluralsDiv').style.display = 'block';
       document.getElementById('submitForm').style.display = 'none';
-    }else if (radioNO && selectedNoPlurals){
+      document.getElementById('baseDiv').style.display = 'block';
+    }else if (radioNO){
       console.log('entra en no pls y click ');
       document.getElementById('pluralsDiv').style.display = 'none';
-      document.getElementById('submitForm').style.display = 'block';
+      document.getElementById('submitForm').style.display = 'none';
       document.getElementById('showListNoPlurals').style.display = 'block';
+      document.getElementById('baseDiv').style.display = 'block';
     }
        clearInputFile(es[3]);
   }
@@ -72,13 +74,12 @@ limitations under the License.
     if (radioYes && selectedNoPlurals && selectedPlurals){
       document.getElementById('submitForm').style.display = 'block';
       document.getElementById('showListPlurals').style.display = 'block';
-      document.getElementById('submitForm').style.display = 'block';
-      document.getElementById('showListPlurals').style.display = 'block';
       document.getElementById('showListNoPlurals').style.display = 'block';
     }else if(radioNO && selectedNoPlurals){
       //No plurals
       document.getElementById('submitForm').style.display = 'block';
       document.getElementById('showListNoPlurals').style.display = 'block';
+      document.getElementById('submitForm').style.display = 'block';
     }
   }
 
@@ -112,13 +113,18 @@ limitations under the License.
     <p><h4>Will contain plurals?</h4></p>
     <input type="radio" name="pls" value="0" id="noPls" onclick="javascript:yesnoCheck();"> No<br>
     <input type="radio" name="pls" value="1" id="yesPls" onclick="javascript:yesnoCheck();"> Yes<br>
-    <br>
-    <h4 style="display: inline-block;">Select a base CSV file</h4>
-    <div class="btn btn-primary btn-smfile-upload" style="position: relative; overflow: hidden; display: inline-block; margin-left:10px;" >
-      <span id="button_upload_file">Upload File</span>
-      <input type="file" id="files" class="file-input" name="uploadedFiles" onchange="javascript:checkFileUploaded('files');" style="position: absolute; top: 0; right: 0; margin: 0; padding: 0; cursor: pointer; opacity: 0; height: 100%;" >
+    <br></br>
+    <div>
+    <div id="baseDiv" style="display:none">
+      <h4 id="title_base" style="display: inline-block;">Select a base CSV file</h4>
+      <div class="btn btn-primary btn-smfile-upload" style="position: relative; overflow: hidden; display: inline-block; margin-left:10px;" >
+        <span id="button_upload_file">Upload File</span>
+        <input type="file" id="files" class="file-input" name="uploadedFiles" onchange="javascript:checkFileUploaded('files');" style="position: absolute; top: 0; right: 0; margin: 0; padding: 0; cursor: pointer; opacity: 0; height: 100%;" >
+      </div>
     </div>
+  </div>
     <p><br>
+
     <div id="pluralsDiv" style="display:none">
       <h4 style="display: inline-block;">Select a CSV file with plurals</h4>
       <div class="btn btn-primary btn-smfile-upload" style="position: relative; overflow: hidden; display: inline-block; margin-left:10px;">
