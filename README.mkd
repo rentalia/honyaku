@@ -28,32 +28,37 @@ This application is a node express-server based application. You will need to in
 
 Now, if everything goes OK you will be able to see something like the image above
 
-![web-local](https://cloud.githubusercontent.com/assets/724536/25343776/50aa3ac6-2910-11e7-9b06-923b99bb00a6.png)
+![local-1](https://cloud.githubusercontent.com/assets/724536/25441508/b8567aac-2aa2-11e7-9137-372bd31585c3.png)
+
+5. You need now to select if you will have or will not have plurals:
+
+![local-2](https://cloud.githubusercontent.com/assets/724536/25441512/bd1e0fbe-2aa2-11e7-891c-a6f2e8a7ce42.png)
+
+6. If you select **NO** for plurals and click on `process button`, you will see a **Success! message**. Go to `Honyaku/download` path and select iOS or Android, you'll see the localized files for each language specified in the CSV file converted in .xml for Android and .strings for iOS.
 
 
-5. Upload the **CSV** file with the format specified above and  mark if you would add plurals also.
+![local-3](https://cloud.githubusercontent.com/assets/724536/25441807/88cb04aa-2aa3-11e7-9d24-57dd9be66343.png)
 
-6. If you select **NO** for plurals and click on **process button**, you will see a Success! message. Go to download path and select iOS or Android, you'll see the localized files for each language specified in CSV file there.
+
+The Success Message looks like this:
+
+![Success](https://cloud.githubusercontent.com/assets/724536/25346311/8df6a9ee-2917-11e7-879b-ed431d548767.png)
+
+
+7. If you select **YES** for plurals, you must select the base CSV file and the CSV plurals file and click **Process button**, if everything goes well you will see a **success! message**. Go to download path and select iOS or Android, you'll see the localized files for each language specified in CSV file there.
+
+![Plurals](https://cloud.githubusercontent.com/assets/724536/25441942/f35457d6-2aa3-11e7-9c38-36700892dd82.png)
 
 Success Message looks like this:
 
 ![Success](https://cloud.githubusercontent.com/assets/724536/25346311/8df6a9ee-2917-11e7-879b-ed431d548767.png)
 
 
-7. If you select **YES** for plurals, select CSV file for plurals and click **Process button**, if everything goes well you will see a success! message. Go to download path and select iOS or Android, you'll see the localized files for each language specified in CSV file there.
-
-![Plurals](https://cloud.githubusercontent.com/assets/724536/25345603/d469aca2-2915-11e7-8306-d4089aeecdc6.png)
-
-Success Message looks like this:
-
-![Success](https://cloud.githubusercontent.com/assets/724536/25346311/8df6a9ee-2917-11e7-879b-ed431d548767.png)
-
-
-**iOS files**
+**This is the path were the iOS files are downloaded**
 
 ![iOS file](https://cloud.githubusercontent.com/assets/724536/25345429/55fc5838-2915-11e7-83f7-c796941d9424.png)
 
-**Android files**
+**This is the path were the Android files are downloaded**
 
 ![Android](https://cloud.githubusercontent.com/assets/724536/25345488/8a9f6350-2915-11e7-8619-fe5bd02617bd.png)
 
