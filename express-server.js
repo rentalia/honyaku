@@ -29,13 +29,20 @@ var CALLBACK_MESSAGE = {
 
 server.use(express.static(__dirname + '/public'));
 
-
 server.get('/',function(request, response){
   response.sendFile(__dirname + '/index.html');
 });
 
+server.get('/upload',function(request, response){
+  response.redirect('/');
+});
 
 server.post('/upload', multipartMiddleware, function(req, res) {
+
+  if(!req){
+    response.redirect('/');
+  }
+
   console.log("Body request: " + req.body);
   console.log("Request files: "+ req.files);
   console.log(req.body, req.files);
@@ -201,7 +208,7 @@ function showError(response, callbackResponse){
   if (callbackResponse.type == CALLBACK_MESSAGE.ERROR){
     html += '<li>'+callbackResponse.message+' Back to Index <a href="http://localhost:3000"></a>'+'</li>';
   }else{
-    html += '<li>'+callbackResponse.code +' '+ callbackResponse+'<a href="http://localhost:3000">Back to Index  </a>'+'</li>';
+    html += '<li>'+callbackResponse.code +' '+ callbackResponse+'<a href="http://localhost:3000" style="display: block;padding-top: 2rem;color: green;"> < Back to Index  </a>'+'</li>';
   }
 
   response.send('<ul>'
