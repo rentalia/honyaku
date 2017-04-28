@@ -4,7 +4,7 @@
 
 Honyaku (hon'yaku) suru in japanese means translation or to translate. And we believe it applies to this software, a web application helper to generate Android and iOS translation files (.xml & .strings) using a CSV file as a source.
 
-Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could added it (or maybe you could added it and make a PR? ;] )
+Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could add it (or maybe you could added it and make a PR? ;] )
 
 ### Installation
 
