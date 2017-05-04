@@ -6,8 +6,7 @@ Honyaku (hon'yaku) suru in japanese means translation or to translate. And we be
 
 Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could add it (or maybe you could added it and make a PR? ;] )
 
-
-![demo-gif](https://cloud.githubusercontent.com/assets/724536/25695338/f63501ac-30b2-11e7-87a8-d8dd0639dbdd.gif)
+![honyaku-2](https://cloud.githubusercontent.com/assets/724536/25695649/44c0b0ea-30b4-11e7-9730-c4da1f4149b6.gif)
 
 ### Installation
 
