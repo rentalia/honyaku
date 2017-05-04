@@ -6,6 +6,9 @@ Honyaku (hon'yaku) suru in japanese means translation or to translate. And we be
 
 Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could add it (or maybe you could added it and make a PR? ;] )
 
+
+![demo-gif](https://cloud.githubusercontent.com/assets/724536/25695338/f63501ac-30b2-11e7-87a8-d8dd0639dbdd.gif)
+
 ### Installation
 
 This application is a node express-server based application. You will need to install npm.
@@ -73,9 +76,9 @@ Success Message looks like this:
 
 The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
 
--  You can use the `Example` folder to see how the CSV are constructed. :page_facing_up:
+-  :page_facing_up: You can use the `Example` folder to see how the CSV are constructed. 
 
- - Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. :memo:
+ - :memo: Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. 
 
 
 
