@@ -178,5 +178,9 @@ Kill the process:
 
 ## TO DO
 
-- [ ] Errors control
+- [x] Errors control
 - [ ] Tests
+
+Author Information
+------------------
+This role was created in 2017 by [Sofa E Swidarowicz Andrade](https://github.com/phynet), iOS engineer at [Rentalia](https://www.rentalia.com)
