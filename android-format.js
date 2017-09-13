@@ -93,7 +93,7 @@ function parseWithRegex(data){
 }
 
 function regexCardinalVariables(data){
-   var regex = /\**\d+\w/g;
+   var regex = /\*\*\d+\w/g;
    var numberWithAsterix = data.match(regex);
    //return **1s
    if (numberWithAsterix){

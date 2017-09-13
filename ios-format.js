@@ -117,7 +117,7 @@ function parseWildcardsForiOS(data){
 function parseWithRegex(data){
   data = regexEscapingSymbol(data);
   data = regexEscapingSymbolPercentage(data);
-  data = regexWithCardinalVariables(data);
+  data = regexCardinalVariables(data);
   data = regexEscapingDoubleQuotation(data);
   return data;
 }
@@ -127,20 +127,74 @@ function regexWithCardinalVariables(data){
   var numberWithAsterix = data.match(regex);
   //return **1s
   if (numberWithAsterix){
-    var deleteAsterix = /\d+/g;
-    var number = String(numberWithAsterix).match(deleteAsterix);
-    //return 1 from **1s
-    var regexLetter = /\**\d\w/g;
-    var letterWithAsterix = data.match(regexLetter);
-    //return **1s for example
-    var deleteAsterixLetter = /([a-z])/g;
-    var letter = String(letterWithAsterix).match(deleteAsterixLetter);
-    //return s/d/f/ld from **1s
+    //var deleteAsterix = /\d+/g;
+    //var number = String(numberWithAsterix).match(deleteAsterix);
+    var number = getNumber(data);
+    var letter = getLetter(data);
+    console.log("number ios" + number + "letter " + letter);
+
     var newLetter = typeVariable(letter);
     data = data.replace("**"+number+letter+"**","%"+number+"$"+newLetter);
   }
   return data;
 }
+
+function regexCardinalVariables(data){
+   var regex = /\*\*\d+\w/g;
+   var numberWithAsterix = data.match(regex);
+   //return **1s
+
+   console.log("numberWithAsterix " + numberWithAsterix);
+   
+   if (numberWithAsterix){
+ 
+    var number = [getNumber(data)];
+    var letter = [getLetter(data)];
+    var length = 0;
+
+    console.log("number ios " + number + " Letter " + letter);
+
+    number = number.toString().split(",").map(Number);
+    letter = letter.toString().split(",").map(String);
+
+    length = number.length;
+
+    for (var indx = 0; indx <= length; indx++){
+      var ast = /\*\*/g;
+      var argRegEx = new RegExp(number[indx] + letter[indx], 'g');
+      var newLetter = typeVariable(letter[indx]);
+
+      console.log("newLetter " + newLetter);
+
+      var replc = "%"+number[indx]+"$"+newLetter;
+
+      var rest = data.replace(argRegEx, replc);
+      data = rest.replace(ast, "");
+      console.log("final data replacing wildcards ios" + data);
+    }
+  }
+  return data;
+}
+
+function getNumber(data){
+  var regex = /\**\d+\w/g;
+  var number = "";
+  var numberWithAsterix = data.match(regex);
+  if (numberWithAsterix){
+    var deleteAsterix = /\d+/g;
+    number = String(numberWithAsterix).match(deleteAsterix);
+  }
+  return number
+}
+
+function getLetter(data){
+    var regexLetter = /\**\d\w/g;
+    var letterWithAsterix = data.match(regexLetter);
+    //return **1s for example
+    var deleteAsterixLetter = /([a-z])/g;
+    return String(letterWithAsterix).match(deleteAsterixLetter);
+}
+
 
 function regexEscapingSymbol(data){
   //delete symbolic scaping %% that is needed in android but not in iOS
