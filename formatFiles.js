@@ -73,33 +73,69 @@ function pluralsFileCreator(nonPluralCSV, pluralsCSV, callback){
   var htmliOS = "";
 
   for (var lang in dictNonPls){
-    htmliOS += moduleClassiOS.headerHTMLiOS();
+    htmliOS += wrapperModuleiOSHeaderHTML;
     for (var identifier in dictPls){
         for(var value in dictPls[identifier]){
           if (value == lang){
-            htmlAndroid += moduleClassAndroid.bodyNameForPlurals(identifier);
-            htmliOS += moduleClassiOS.bodyWithIDHTMLiOS(identifier);
+            htmlAndroid += wrapperModuleAndroidBodyName(identifier);
+            htmliOS += wrapperModuleiOSBodyName(identifier);
             for (var val in dictPls[identifier][value]){
               var valIdentifier = dictPls[identifier][value][val];
               if(valIdentifier != ''){
-                htmliOS += moduleClassiOS.bodyHTMLiOS(val,valIdentifier);
-                htmlAndroid += moduleClassAndroid.bodyHTMLAndroid(val,valIdentifier);
+                htmliOS += wrapperModuleiOSBodyHTML(val,valIdentifier);
+                htmlAndroid += wrapperModuleAndroidBodyHTML(val,valIdentifier);
               }
             }
-            htmlAndroid += moduleClassAndroid.footerHTMLAndroid();
-            htmliOS += moduleClassiOS.footerHTMLiOS();
+            htmlAndroid += wrapperModuleAndroidFooterHMTL;
+            htmliOS += wrapperModuleiOSFooterHTML;
            }
           }
         }
         var data = dictNonPls[lang];
         htmliOS += moduleClassiOS.footerCloseHTMLiOS();
-        moduleClassAndroid.toAndroid(data, lang, htmlAndroid,_fileName);
-        moduleClassiOS.toiOS(data,lang,_fileName);
-        moduleClassiOS.toiOSPlurals(htmliOS,lang,_fileName); //save plurals
+        goToModules(data, lang, htmlAndroid,htmliOS,_fileName)
         htmlAndroid = "";
         htmliOS = "";
     }
     callback(CALLBACK_MESSAGE.SUCCESS);
+}
+
+function wrapperModuleiOSHeaderHTML(){
+  return moduleClassiOS.headerHTMLiOS();
+}
+
+function wrapperModuleAndroidBodyName(identifier){
+  return moduleClassAndroid.bodyNameForPlurals(identifier);
+}
+
+function wrapperModuleiOSBodyName(identifier){
+  return moduleClassiOS.bodyWithIDHTMLiOS(identifier);
+}
+
+function wrapperModuleiOSBodyHTML(val, identifier){
+  return moduleClassiOS.bodyHTMLiOS(val,valIdentifier);
+}
+
+function wrapperModuleAndroidBodyHTML(val, identifier){
+  return moduleClassAndroid.bodyHTMLAndroid(val,valIdentifier);
+}
+
+function wrapperModuleiOSFooterHTML(){
+  return moduleClassiOS.footerHTMLiOS();
+}
+
+function wrapperModuleAndroidFooterHMTL(){
+  return moduleClassAndroid.footerHTMLAndroid();
+}
+
+function wrapperModuleiOSFooterCloseHTML(){
+  return moduleClassiOS.footerCloseHTMLiOS();
+}
+
+function goToModules(data, lang, htmlAndroid,htmliOS, fileName){
+  moduleClassAndroid.toAndroid(data, lang, htmlAndroid,fileName);
+  moduleClassiOS.toiOS(data,lang,fileName);
+  moduleClassiOS.toiOSPlurals(htmliOS,lang,fileName);
 }
 
 function nonPluralFileCreator(csv, callback){

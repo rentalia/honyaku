@@ -43,19 +43,31 @@ function toAndroid(data, lang, dataPls,fileName){
     docu += dataPls;
     console.log('docu is: ' + docu);
   }
+  createBodyHTML(data, lang, docu, endDoc, fileName);
+}
+
+function createBodyHTML(data, lang, docu, endDoc, fileName){
   if (data){
     for(var key in data) {
       var kValue = (lang == '' ) ? data[key] : key ;
       //add here evaluation for wildcards
       var dataValue = parseWildcardsForAndroid(data[key]);
+      if (key == 'app_viendo_x_inmu_de_y'){
+        console.log('PARSE ' + dataValue);
+      }
+
       docu += '<string name="' + kValue + '">' + dataValue +'</string>' +'\r\n';
     }
     docu += endDoc;
     console.log(docu);
     // Save in Disk
-    var moduleClass = require('./formatFiles');
-    moduleClass.saveInDisk(fileName, docu);
+    saveInDisk(fileName, docu);
   }
+}
+
+function saveInDisk(fileName, docu){
+  var moduleClass = require('./formatFiles');
+  moduleClass.saveInDisk(fileName, docu);
 }
 
 function parseWildcardsForAndroid(data){
@@ -81,24 +93,47 @@ function parseWithRegex(data){
 }
 
 function regexCardinalVariables(data){
-  var regex = /\**\d+\w/g;
-  var numberWithAsterix = data.match(regex);
-  //return **1s
-  if (numberWithAsterix){
-    //add symbolic escaping %% that is needed in android but not in iOS
-    var deleteAsterix = /\d+/g;
-    var number = String(numberWithAsterix).match(deleteAsterix);
-    //return 1 from **1s
-    var regexLetter = /\**\d\w/g;
-    var letterWithAsterix = data.match(regexLetter);
-    //return **1s for example
-    var deleteAsterixLetter = /([a-z])/g;
-    var letter = String(letterWithAsterix).match(deleteAsterixLetter);
-    //return s from **1s
-    data = data.replace("**"+number+letter+"**","%"+number+"$"+letter);
-    console.log("data replaced 1 " + data);
+   var regex = /\**\d+\w/g;
+   var numberWithAsterix = data.match(regex);
+   //return **1s
+   if (numberWithAsterix){
+ 
+    var number = [getNumber(data)];
+    var letter = [getLetter(data)];
+    var length = 0;
+
+    number = number.toString().split(",").map(Number);
+    letter = letter.toString().split(",").map(String);
+
+    length = number.length;
+
+    for (var indx = 0; indx <= length; indx++){
+      var ast = /\*\*/g;
+      var argRegEx = new RegExp(number[indx] + letter[indx], 'g');
+      var replc = "%"+number[indx]+"$"+letter[indx];
+
+      var rest = data.replace(argRegEx, replc);
+      data = rest.replace(ast, "");
+      console.log("final data replacing wildcards android" + data);
+    }
   }
   return data;
+}
+
+function getLetter(data){
+  var regexLetter = /\**\d\w/g;
+  var letterWithAsterix = data.match(regexLetter);
+    //return **1s for example
+  var deleteAsterixLetter = /([a-z])/g;
+  return String(letterWithAsterix).match(deleteAsterixLetter);
+}
+
+function getNumber(data){
+    //add symbolic escaping %% that is needed in android but not in iOS
+    var regex = /\**\d+\w/g;
+    var numberWithAsterix = data.match(regex);
+    var deleteAsterix = /\d+/g;
+    return String(numberWithAsterix).match(deleteAsterix);
 }
 
 function regexEscapingSymbol(data){
