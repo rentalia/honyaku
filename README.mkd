@@ -4,7 +4,9 @@
 
 Honyaku (hon'yaku) suru in japanese means translation or to translate. And we believe it applies to this software, a web application helper to generate Android and iOS translation files (.xml & .strings) using a CSV file as a source.
 
-Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could added it (or maybe you could added it and make a PR? ;] )
+Right now, we don't support **.po** files, because we develop this tool to help us in our day to day work (we don't work with **.po** files), and we thought that maybe as it is, this software could help others in the same quest we fought (making easy translation process), but if lot of people asks for **.po** support we could add it (or maybe you could added it and make a PR? ;] )
+
+![honyaku-2](https://cloud.githubusercontent.com/assets/724536/25695649/44c0b0ea-30b4-11e7-9730-c4da1f4149b6.gif)
 
 ### Installation
 
@@ -21,6 +23,10 @@ This application is a node express-server based application. You will need to in
 3. Next step is to run express-server using the next command:
 
         node express-server.js
+        
+3.1. If you want to edit any JS file, think of using [nodemon](https://nodemon.io/). Is a utility that will monitor for any changes in your source and automatically restart your server. Perfect for development 
+
+        sudo npm install -g nodemon
 
 4. Open a web browser and type this url:
 
@@ -69,9 +75,9 @@ Success Message looks like this:
 
 The CSV file needs to have the next structure: **key** (lower case) and the short name for each language supported in **capital letters**, placed in each column of the CSV. The first column should always be the **key** word, next column should be each of the supported languages in your application. 
 
--  You can use the `Example` folder to see how the CSV are constructed. :page_facing_up:
+-  :page_facing_up: You can use the `Example` folder to see how the CSV are constructed. 
 
- - Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. :memo:
+ - :memo: Also, you can create in path `download/Android`  and `download/iOS` all the languages that your app will support. 
 
 
 
@@ -172,5 +178,9 @@ Kill the process:
 
 ## TO DO
 
-- [ ] Errors control
+- [x] Errors control
 - [ ] Tests
+
+Author Information
+------------------
+This role was created in 2017 by [Sofa E Swidarowicz Andrade](https://github.com/phynet), iOS engineer at [Rentalia](https://www.rentalia.com)
