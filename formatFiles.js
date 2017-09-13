@@ -86,8 +86,8 @@ function pluralsFileCreator(nonPluralCSV, pluralsCSV, callback){
                 htmlAndroid += wrapperModuleAndroidBodyHTML(val,valIdentifier);
               }
             }
-            htmlAndroid += wrapperModuleAndroidFooterHMTL;
-            htmliOS += wrapperModuleiOSFooterHTML;
+            htmlAndroid += moduleClassAndroid.footerHTMLAndroid();
+            htmliOS += moduleClassiOS.footerHTMLiOS();
            }
           }
         }
