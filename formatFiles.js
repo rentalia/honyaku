@@ -113,11 +113,11 @@ function wrapperModuleiOSBodyName(identifier){
 }
 
 function wrapperModuleiOSBodyHTML(val, identifier){
-  return moduleClassiOS.bodyHTMLiOS(val,valIdentifier);
+  return moduleClassiOS.bodyHTMLiOS(val,identifier);
 }
 
 function wrapperModuleAndroidBodyHTML(val, identifier){
-  return moduleClassAndroid.bodyHTMLAndroid(val,valIdentifier);
+  return moduleClassAndroid.bodyHTMLAndroid(val,identifier);
 }
 
 function wrapperModuleiOSFooterHTML(){
